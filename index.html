@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirecting…</title>
+
+<!-- 1) tells search engines where the real page lives -->
+<link rel="canonical" href="https://cadik.posvete.cz/">
+
+<!-- 2) open the connection to the target while parsing the head -->
+<link rel="preconnect" href="https://cadik.posvete.cz" crossorigin>
+
+<!-- 3) primary redirect: replaces the history entry, keeps #fragment and ?query -->
+<script>
+(function () {
+  var target = "https://cadik.posvete.cz/";
+  try {
+    if (location.search) { target += location.search; }
+    if (location.hash)   { target += location.hash; }
+    location.replace(target);
+  } catch (e) {
+    /* blocked JS? the meta refresh below still fires */
+  }
+})();
+</script>
+
+<!-- 4) fallback redirect for JS-disabled / JS-blocked clients -->
+<meta http-equiv="refresh" content="0; url=https://cadik.posvete.cz/">
+
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;
+       font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+       color:#1a1a1a;background:#fff}
+  a{color:inherit}
+  @media (prefers-color-scheme:dark){body{color:#eee;background:#111}}
+</style>
+</head>
+<body>
+<p>Redirecting to <a href="https://cadik.posvete.cz/">cadik.posvete.cz</a>…</p>
+</body>
+</html>
